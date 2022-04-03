@@ -13,3 +13,13 @@ $shopList = array("Apple", "Orange", "Grapes", "Meet", "Chicken", "Potatos", "To
 
 $itemList = $shopList[3];
 echo "The item of this list is: $itemList" . PHP_EOL;
+
+/* ---------------------------------------------------- */
+
+// Quando é um array númerico é possível adicionar elementos novos na lista sem definir 
+
+$idadeList[] = 20;
+
+foreach ($idadeList as $idade) {
+    echo $idade . PHP_EOL;
+}
