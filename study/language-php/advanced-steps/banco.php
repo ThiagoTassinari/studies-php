@@ -7,7 +7,7 @@
 // require 'function.php';
 
 // Terceira forma de importar um arquivo
-require_once 'function.php';
+require_once 'functions.php';
 
 $contasCorrentes = [
     '123.456.789-10' => [
@@ -25,9 +25,10 @@ $contasCorrentes = [
 ];
 
 $contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], 500);
-$contasCorrentes['123.456.489-11'] = sacar($contasCorrentes['123.456.489-11'], 500);
+$contasCorrentes['123.456.489-11'] = sacar($contasCorrentes['123.456.489-11'], 200);
+$contasCorrentes['123.256.781-11'] = depositar($contasCorrentes['123.256.781-11'], 100);
 
-$contasCorrentes['123.256.781-11'] = depositar($contasCorrentes['123.256.781-11'], -100);
+titularComLestrasMaisculas($contasCorrentes['123.256.781-11']);
 
 foreach ($contasCorrentes as $cpf => $conta) {
     exibiMessagem("$cpf {$conta['titular']} {$conta['saldo']}");
