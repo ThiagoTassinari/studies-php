@@ -1,5 +1,17 @@
 <?php
 
+// Função: É algo que retorna um valor após sua execução
+function sacar($conta, $valorASacar) {
+    if ($valorASacar > $conta['saldo']) {
+        exibiMessagem('Você não pode sacar');
+    } else {
+        $conta['saldo'] -= $valorASacar;
+    }
+
+    return $conta;
+}
+
+// Subrotina: É uma função que não retorna valor na sua execução.
 function exibiMessagem($messagem) {
     echo $messagem . PHP_EOL;
 };
@@ -19,18 +31,8 @@ $contasCorrentes = [
     ]
 ];
 
-if (500 > $contasCorrentes['123.456.789-10']['saldo']) {
-    exibiMessagem("Você não pode sacar");
-} else {
-    $contasCorrentes['123.456.789-10']['saldo'] -= 500;
-}
-
-if (500 > $contasCorrentes['123.456.489-11']['saldo']) {
-    exibiMessagem("Você não pode sacar este valor");
-} else {
-    $contasCorrentes['123.456.489-11']['saldo'] -= 500;
-}
-
+$contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], 500);
+$contasCorrentes['123.456.489-11'] = sacar($contasCorrentes['123.456.489-11'], 500);
 
 foreach ($contasCorrentes as $cpf => $conta) {
     exibiMessagem($cpf . " " . $conta['titular'] . ' ' . $conta['saldo']);
