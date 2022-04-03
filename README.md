@@ -15,4 +15,6 @@
 
 ## Referências
 - https://www.php.net/docs.php
+- https://www.php.net/manual/en/language.types.string.php
+- https://www.php.net/manual/en/errorfunc.constants.php
 - https://www.alura.com.br/artigos/php-uma-introducao-linguagem
