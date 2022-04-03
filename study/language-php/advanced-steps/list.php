@@ -3,6 +3,8 @@
 // Declarações Array - Primeiro Modo
 $idadeList = [21, 23, 19, 25, 30, 41, 18];
 
+unset($idadeList[4]);
+
 $indexList = $idadeList[3];
 echo "The index of this list is: $indexList" . PHP_EOL;
 
