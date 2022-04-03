@@ -31,5 +31,14 @@ $contasCorrentes['123.256.781-11'] = depositar($contasCorrentes['123.256.781-11'
 titularComLestrasMaisculas($contasCorrentes['123.256.781-11']);
 
 foreach ($contasCorrentes as $cpf => $conta) {
-    exibiMessagem("$cpf {$conta['titular']} {$conta['saldo']}");
+    /*
+    * 1º Forma de usar função list()
+    list('titular' => $titular, 'saldo' => $saldo) = $conta;
+    */
+
+    // 2º Forma de usar a função list()
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    exibiMessagem(
+        "$cpf $titular $saldo"
+    );
 }
