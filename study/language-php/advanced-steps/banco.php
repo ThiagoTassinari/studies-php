@@ -7,7 +7,7 @@
 // require 'function.php';
 
 // Terceira forma de importar um arquivo
-require_once 'function.php';
+require_once 'functions.php';
 
 $contasCorrentes = [
     '123.456.789-10' => [
@@ -25,10 +25,22 @@ $contasCorrentes = [
 ];
 
 $contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], 500);
-$contasCorrentes['123.456.489-11'] = sacar($contasCorrentes['123.456.489-11'], 500);
+$contasCorrentes['123.456.489-11'] = sacar($contasCorrentes['123.456.489-11'], 200);
+$contasCorrentes['123.256.781-11'] = depositar($contasCorrentes['123.256.781-11'], 100);
 
-$contasCorrentes['123.256.781-11'] = depositar($contasCorrentes['123.256.781-11'], -100);
+unset($contasCorrentes['123.456.489-11']);
+
+titularComLestrasMaisculas($contasCorrentes['123.256.781-11']);
 
 foreach ($contasCorrentes as $cpf => $conta) {
-    exibiMessagem("$cpf {$conta['titular']} {$conta['saldo']}");
+    /*
+    * 1º Forma de usar função list()
+    list('titular' => $titular, 'saldo' => $saldo) = $conta;
+    */
+
+    // 2º Forma de usar a função list()
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    exibiMessagem(
+        "$cpf $titular $saldo"
+    );
 }
