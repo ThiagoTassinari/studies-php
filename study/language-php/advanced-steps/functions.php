@@ -26,11 +26,17 @@ function depositar(array $conta, float $valorADepositar): array
 // Subrotina: É uma função que não retorna valor na sua execução.
 function exibiMessagem(string $messagem) 
 {
-    echo $messagem . PHP_EOL;
+    echo $messagem . '<br>';
 };
 
 function titularComLestrasMaisculas(array &$conta)  // Passagem de valor por referência
 {
    $conta['titular'] = mb_strtoupper($conta['titular']); // Precisa editar o php.init para liberar essa extensão
    // $conta['titular'] = strtoupper($conta['titular']); Essa função não precisa ser habilitada no arquivo php.init   
+}
+
+function exibeConta(array $conta) 
+{
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    echo "<li>Titular: $titular . Saldo: $saldo</li>";
 }
