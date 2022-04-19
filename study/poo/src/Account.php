@@ -2,16 +2,13 @@
 
 class Account
 {
-    private string $cpfTitular;
-    private string $nameTitular;
+    private Titular $titular;
     private float $balance;
     private static int $numberAccounts = 0;
 
-    public function __construct(string $cpfTitular, string $nameTitular)
+    public function __construct(Titular $titular)
     {
-        $this->cpfTitular = $cpfTitular;
-        $this->validNameTitular($nameTitular);
-        $this->nameTitular = $nameTitular;
+        $this->titular = $titular;
         $this->balance = 0;
 
         self::$numberAccounts++;
@@ -58,22 +55,14 @@ class Account
         return $this->balance;
     }
 
-    public function getCpfTitular(): string
-    {
-        return $this->cpfTitular;
-    }
-
     public function getNameTitular(): string
     {
-        return $this->nameTitular;
+        return $this->titular->getName();
     }
 
-    private function validNameTitular($nameTitular)
+    public function getCpfTitular(): string
     {
-        if (strlen($nameTitular) < 5) {
-            echo "Nome precisa ter pelo menos 5 caracteres";
-            exit();
-        }
+        return $this->titular->getCpf();
     }
 
     public static function getNumberAccount(): int
