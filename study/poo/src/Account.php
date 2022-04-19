@@ -4,8 +4,23 @@ class Account
 {
     private string $cpfTitular;
     private string $nameTitular;
-    private float $balance = 0;
+    private float $balance;
+    private static int $numberAccounts = 0;
 
+    public function __construct(string $cpfTitular, string $nameTitular)
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->validNameTitular($nameTitular);
+        $this->nameTitular = $nameTitular;
+        $this->balance = 0;
+
+        self::$numberAccounts++;
+    }
+
+    public function __destruct()
+    {
+        self::$numberAccounts--;
+    }
 
     public function withdraw(float $valueWithdraw): void
     {
@@ -43,23 +58,26 @@ class Account
         return $this->balance;
     }
 
-    public function setCpfTitular(string $cpf): void
-    {
-        $this->cpfTitular = $cpf;
-    }
-
     public function getCpfTitular(): string
     {
         return $this->cpfTitular;
     }
 
-    public function getNameTitular(string $name): void
-    {
-        $this->nameTitular = $name;
-    }
-
-    public function setNameTitular(): string
+    public function getNameTitular(): string
     {
         return $this->nameTitular;
+    }
+
+    private function validNameTitular($nameTitular)
+    {
+        if (strlen($nameTitular) < 5) {
+            echo "Nome precisa ter pelo menos 5 caracteres";
+            exit();
+        }
+    }
+
+    public static function getNumberAccount(): int
+    {
+        return self::$numberAccounts;
     }
 }
