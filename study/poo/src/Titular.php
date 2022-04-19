@@ -1,32 +1,19 @@
 <?php
 
-class Titular 
+class Titular extends People
 {
-    private CPF $cpf;
-    private string $name;
+    private Address $address;
 
-    public function __construct(CPF $cpf, string $name)
+    public function __construct(CPF $cpf, string $name, Address $address)
     {
         $this->cpf = $cpf;
-        $this->validNameTitular($name);
         $this->name = $name;
+        $this->address = $address;
+        $this->validNameTitular($name); 
     }
 
-    public function getCpf(): string
+    public function getAddress(): Address
     {
-        return $this->cpf->getNumber();
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    private function validNameTitular(string $nameTitular)
-    {
-        if (strlen($nameTitular) < 5) {
-            echo "Nome precisa ter pelo menos 5 caracteres";
-            exit();
-        }
+        return $this->address;
     }
 }
